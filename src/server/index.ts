@@ -26,6 +26,17 @@ mp.events.addCommand("veh", (player, vehicle) => {
     mp.vehicles.new(mp.joaat(vehicle), position, {heading: player.heading, numberPlate: player.name, dimension: player.dimension});
 });
 
+// Tuning
+mp.events.add("mod", (player, mod, modvalue) => {
+    console.log(mod, modvalue);
+    player.vehicle.setMod(parseInt(mod), parseInt(modvalue));
+});
+
+mp.events.addCommand('mod', (player, _fullText, a , b) => {
+    console.log('mod');
+    player.vehicle.setMod(parseInt(a), parseInt(b));
+});
+
 mp.events.add('playerReady', (player) => {
 	console.log(`${player.name} is ready!`);
 
